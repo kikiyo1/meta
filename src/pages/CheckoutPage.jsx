@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -25,7 +26,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     axios.get('https://api.mayar.id/v1/logistics/provinces', {
-      headers: { Authorization: apiKey },
+      headers: { Authorization: `Bearer ${apiKey}` },
     })
       .then(res => setProvinces(res.data.data))
       .catch(() => toast({ title: 'Gagal memuat provinsi', variant: 'destructive' }));
@@ -196,4 +197,3 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-
