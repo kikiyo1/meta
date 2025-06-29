@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -35,7 +34,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     if (formData.province) {
       axios.get(`https://api.mayar.id/v1/logistics/cities?province=${formData.province}`, {
-        headers: { Authorization: apiKey },
+        headers: { Authorization: `Bearer ${apiKey}` },
       })
         .then(res => setCities(res.data.data))
         .catch(() => toast({ title: 'Gagal memuat kota', variant: 'destructive' }));
@@ -197,3 +196,4 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
