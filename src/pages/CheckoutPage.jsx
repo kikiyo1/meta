@@ -27,7 +27,8 @@ const CheckoutPage = () => {
     axios.get('https://api.mayar.id/v1/logistics/provinces', {
       headers: { Authorization: `Bearer ${apiKey}` },
     })
-      .then(res => setProvinces(res.data.data))
+      .then(res => console.log('Provinces response:', res);
+      setProvinces(res.data.data))
       .catch(() => toast({ title: 'Gagal memuat provinsi', variant: 'destructive' }));
   }, []);
 
@@ -36,7 +37,8 @@ const CheckoutPage = () => {
       axios.get(`https://api.mayar.id/v1/logistics/cities?province=${formData.province}`, {
         headers: { Authorization: `Bearer ${apiKey}` },
       })
-        .then(res => setCities(res.data.data))
+        .then(res => console.log('Cities response:', res);
+        setCities(res.data.data))
         .catch(() => toast({ title: 'Gagal memuat kota', variant: 'destructive' }));
     }
   }, [formData.province]);
@@ -196,4 +198,5 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
 
