@@ -2,9 +2,9 @@ export const products = [
   // Rak Category
   {
     id: 1,
-    name: "Rak Buku Minimalis 5 Tingkat",
+    name: "Rak Gondola",
     description: "Rak buku dengan desain minimalis modern, terbuat dari kayu berkualitas tinggi dengan finishing yang halus. Cocok untuk ruang tamu, kamar, atau kantor.",
-    price: 850000,
+    price: 1500000,
     category: "rak",
     rating: 4.8,
     reviews: 124,
