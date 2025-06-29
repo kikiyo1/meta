@@ -4,13 +4,19 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch('https://api.mayar.id/v1/logistics/provinces', {
-      headers: { Authorization: `Bearer ${apiKey}` },
+      headers: {
+        Authorization: `Bearer ${apiKey}`
+      }
     });
 
-    const data = await response.json();
+    const raw = await response.text(); // ambil response mentah
+    console.error('Mayar API raw response:', raw); // log untuk cek isinya
+
+    const data = JSON.parse(raw); // coba parse
     res.status(response.status).json(data);
   } catch (error) {
     console.error('Provinces error:', error);
     res.status(500).json({ error: 'Failed to fetch provinces' });
   }
 }
+
