@@ -27,7 +27,7 @@ const CheckoutPage = () => {
     axios.get('https://api.mayar.id/v1/logistics/provinces', {
       headers: { Authorization: apiKey },
     })
-      .then(res => setProvinces(res.data))
+      .then(res => setProvinces(res.data.data))
       .catch(() => toast({ title: 'Gagal memuat provinsi', variant: 'destructive' }));
   }, []);
 
@@ -36,7 +36,7 @@ const CheckoutPage = () => {
       axios.get(`https://api.mayar.id/v1/logistics/cities?province=${formData.province}`, {
         headers: { Authorization: apiKey },
       })
-        .then(res => setCities(res.data))
+        .then(res => setCities(res.data.data))
         .catch(() => toast({ title: 'Gagal memuat kota', variant: 'destructive' }));
     }
   }, [formData.province]);
@@ -196,3 +196,4 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
