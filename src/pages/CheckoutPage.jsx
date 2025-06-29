@@ -44,23 +44,22 @@ const CheckoutPage = () => {
   }, [formData.province]);
 
   const handleCheckShipping = () => {
-    if (!formData.city || !formData.courier) return;
-    setLoadingShipping(true);
-    axios.post('https://api.mayar.id/v1/logistics/cost', {
-      origin: '501', // contoh: Yogyakarta
-      destination: formData.city,
-      courier: formData.courier,
-      weight: 1000
-    }, {
-      headers: {
-        Authorization: apiKey,
-        'Content-Type': 'application/json'
-      }
+  if (!formData.city || !formData.courier) return;
+  setLoadingShipping(true);
+
+  axios.post('/api/cost', {
+    origin: '501',
+    destination: formData.city,
+    courier: formData.courier,
+    weight: 1000
+  })
+    .then(res => {
+      console.log('Shipping cost response:', res);
+      setShippingCost(res.data.costs[0].cost);
     })
-      .then(res => setShippingCost(res.data.costs[0].cost))
-      .catch(() => toast({ title: 'Gagal menghitung ongkir', variant: 'destructive' }))
-      .finally(() => setLoadingShipping(false));
-  };
+    .catch(() => toast({ title: 'Gagal menghitung ongkir', variant: 'destructive' }))
+    .finally(() => setLoadingShipping(false));
+};
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -198,5 +197,3 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-
-
