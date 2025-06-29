@@ -12,6 +12,18 @@ import CartPage from '@/pages/CartPage';
 import CheckoutPage from '@/pages/CheckoutPage';
 import CheckoutSuccessPage from '@/pages/CheckoutSuccessPage';
 import CheckoutCancelPage from '@/pages/CheckoutCancelPage';
+import React from 'react';
+import MayarFrame from './components/MayarFrame';
+function App() {
+  return (
+    <div>
+      <h1>Produk Kami</h1>
+      <MayarFrame />
+    </div>
+  );
+}
+
+export default App;
 
 function App() {
   return (
